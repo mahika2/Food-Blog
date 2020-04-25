@@ -1,0 +1,100 @@
+* {box-sizing: border-box;}
+
+img{
+    width:100%;
+    height:600px;
+}
+  
+.log
+{
+  width:30%;
+  height:380px;
+  margin:60px 350px 60px 550px;
+  background-color: burlywood;
+  padding:20px;
+}
+
+.glow {
+  font-size: 60px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+
+    input[type=text] {
+  width: 210px;
+  height: 35px;
+  box-sizing: border-box;
+  border: 2px solid #f44336 ;
+  color: #f44336;
+  font-size: 16px;
+  background-color: transparent;
+ 
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+}
+.recipe img 
+{
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      width: 100%;
+      height: 55%;
+}
+.recipe p
+{
+      font-family: cursive;
+      font-weight: bold;
+      font-size: 25px;
+      text-align: center;
+      color: #351313fa;
+}
+.recipe:hover
+    {
+      transform: scale(1.1);
+    }
+    .recipe-data
+  {
+        background-color:rgb(158, 80, 80);
+  }
+  .recipe {
+  background-color: #b83232de;
+    margin: 60px !important;
+    border-radius: 10px;
+    padding: 0px !important;
+    height: 600px;
+    box-shadow: 0px 0px 30px black;
+}
+input[type=text]:focus {
+  width: 20%;
+  border: 2px solid #f44336 ;
+  text-align: center;
+}
+input[type=button]{
+  background-color: #f44336; /* Green */
+  border: none;
+  height: 38px;
+  color: white;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 6px;
+
+  cursor: pointer;
+}

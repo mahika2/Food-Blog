@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Bon Appetit</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="muk.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <title></title>
+        <link rel="stylesheet" href="muk.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+<style>
+
+
+.recipe img 
+{
+
+      width: 20%;
+      height: 35%;
+}
+.recipe p
+{
+     font-family: cursive;
+      font-weight: bold;
+      font-size: 25px;
+      text-align: center;
+      color: #351313fa;
+}
+
+    .recipe-data
+  {
+       text-align:center;
+margin-top:25%;
+
+
+  }
+  .recipe {
+ text-align:center;
+}
+
+.in{
+margin-left:40%;
+margin-top:2%;
+height:40px;
+width:300px;
+border-radius:5px;
+border:2px solid white;
+}
+.in2{
+margin-left:47%;
+margin-top:2%;
+height:40px;
+width:300px;
+border:2px solid white;
+}
+#recipes
+{
+background-image:url("reci.jpg");
+height:700px;
+}
+#btn
+{
+height:40px;
+width:70px;
+}
+#link
+{
+font-size:18px;
+color:darkblue;
+
+}
+#row
+{
+padding:80px;
+spacing:50px;
+   
+}
+#col
+{
+padding:80px;
+spacing:50px;
+}
+#table
+{
+text-align:center;
+margin-left:20px;
+margin-top:20px;
+ border-spacing:10px 35px; 
+}
+</style>
+
+    <body>
+        <header>
+            <div class="container">
+                <nav>
+                    <h1 class="brand">
+                        <a href="api.html">Bumble<span>Whiskers</span></a>
+                    </h1>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="drinks2.html">Drinks Paradise</a></li>
+                        <li><a href="#CU">Recipes</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        
+                    </ul>
+                </nav>
+                
+
+            </div>
+        </header>
+
+        <div class="searchBox">
+
+            <input class="searchInput" type="text" id="first" name="" placeholder="Search in your City !">
+            <button class="searchButton" onclick="functionality3()">
+                <i class="material-icons">
+                    search
+                </i>
+            </button>
+        </div>
+
+        <div class="Iam">
+
+            <p>I </p>
+            <b>
+              <div class="innerIam">
+                am on a<br /> 
+                seafood diet<br />
+                see food<br />
+                and<br />
+                eat it
+                </div>
+            </b>
+            </div>
+            
+
+			<div id='cont'>
+			</div>
+			<script src="muk.js" ></script>
+			
+	
+<div id="recipes">
+<br><br>
+<figcaption>
+    <p style="font-size:50px;margin-top:50px; font-weight:bold;text-align:center">Recipes</p>
+  </figcaption>
+  <a href="#" name ="CU"></a>
+<body>
+<div class="app2"><br><br><br><br><br><br><br><br>
+<p style="text-align:center; font-size:26px; font-family:cursive">Find Food Recipe Here</p>
+<input class='in' type='text' id='query' placeholder='Enter Dish'>
+<input class='in2' type='button' onclick='srch()' value='Search' style="width:85px;">
+</div>
+<br><br>
+<p id='resDetails'></p>
+<script >
+var id='4629df7d'
+var key='a04da6cfd96bad9e15d82c5ce59d012a'
+var q;
+function srch()
+{
+q=document.getElementById('query').value
+var url='https://api.edamam.com/search?app_id='+id+'&app_key='+key+'&q='+q+''
+console.log(url)
+var body = document.getElementsByTagName("body")[0];
+var xhr=new XMLHttpRequest();
+var data;
+xhr.onreadystatechange = function()
+{
+
+if (this.readyState == 4 && this.status == 200)
+{
+data=JSON.parse(this.responseText);
+
+var divMain= document.getElementById("resDetails");
+var child = divMain.lastElementChild;
+while (child)
+{
+divMain.removeChild(child);
+child = divMain.lastElementChild;
+}
+
+var nameTab = document.createElement("table");
+nameTab.setAttribute("id","table");
+
+var nameRow = document.createElement("TR");
+nameRow.setAttribute("id","row");
+
+var nameCol = document.createElement("Td");
+nameCol.setAttribute("id","col");
+
+var ourTableBody = document.createElement("tbody");
+
+var colCount = 0;
+
+for(i=0;i<data.hits.length;i++)
+{
+colCount =colCount + 1;
+var res_name=data.hits[i].recipe.label;
+var res_img=data.hits[i].recipe.image;
+var res_url=data.hits[i].recipe.url;
+
+var nameRes = document.createElement("h2");
+nameRes.setAttribute("id","cocktail_name");
+nameRes.innerHTML=res_name;
+
+
+
+var imgRes = document.createElement("img");
+imgRes.setAttribute("id","image");
+imgRes.setAttribute("src",res_img);
+imgRes.setAttribute("height","250px");
+imgRes.setAttribute("width","300px");
+
+var urlRes = document.createElement("a");
+urlRes.setAttribute("href",res_url);
+urlRes.setAttribute("id","link");
+urlRes.innerHTML="Click here to see the recipe";
+
+
+ if (colCount > 4)
+{
+  colCount =1;
+  ourTableBody.appendChild(nameRow);
+  nameRow=document.createElement("tr");
+
+}
+nameCol = document.createElement("td");
+nameCol.appendChild(nameRes);
+var lineBreak = document.createElement("br");
+nameCol.appendChild(lineBreak);
+nameCol.appendChild(lineBreak);
+nameCol.appendChild(imgRes);
+var lineBreak3 = document.createElement("br");
+nameCol.appendChild(lineBreak3);
+nameCol.appendChild(lineBreak3);
+nameCol.appendChild(urlRes);
+var lineBreak2 = document.createElement("br");
+nameCol.appendChild(lineBreak2);
+nameRow.appendChild(nameCol);
+var lineBreak1 = document.createElement("br");
+nameRow.appendChild(lineBreak1);
+nameRow.appendChild(lineBreak1);
+
+   }
+ourTableBody.appendChild(nameRow);
+nameTab.appendChild(ourTableBody);
+body.appendChild(nameTab);
+
+nameTab.setAttribute("border","0");
+
+
+}
+};
+xhr.open('GET',url)
+
+
+
+xhr.send()
+}
+</script>
+</body>
+</html>
+				
